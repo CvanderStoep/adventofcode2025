@@ -36,7 +36,6 @@ def is_valid_two(id_: int) -> bool:
 
     return True
 
-
 def compute_part_one(file_name: str) -> str:
     content = read_input_file(file_name)
     sum_invalid_id = 0
