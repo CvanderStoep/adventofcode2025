@@ -4,7 +4,6 @@ def read_input_file(file_name: str) -> list:
 
     # content = list(map(int, content))
 
-
     return content
 
 

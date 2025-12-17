@@ -4,13 +4,14 @@ def read_input_file(file_name: str) -> list:
 
     # content = list(map(int, content))
 
-
     return content
+
 
 def is_valid_id(id_: int) -> bool:
     s = str(id_)
     mid = len(s) // 2
     return s[:mid] != s[mid:]
+
 
 def is_valid_two(id_: int) -> bool:
     s = str(id_)
@@ -36,6 +37,7 @@ def is_valid_two(id_: int) -> bool:
 
     return True
 
+
 def compute_part_one(file_name: str) -> str:
     content = read_input_file(file_name)
     sum_invalid_id = 0
@@ -47,6 +49,7 @@ def compute_part_one(file_name: str) -> str:
                 sum_invalid_id += id_
 
     return f"{sum_invalid_id=}"
+
 
 def compute_part_two(file_name: str) -> str:
     content = read_input_file(file_name)

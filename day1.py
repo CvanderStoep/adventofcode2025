@@ -1,4 +1,6 @@
 import re
+
+
 def read_input_file(file_name: str) -> list:
     with open(file_name) as f:
         content = f.read().splitlines()
@@ -13,10 +15,11 @@ def process_rotation(rotation: str) -> tuple[str, int]:
 
 def turn_dial(direction: str, start_position: int, rotation: int) -> int | None:
     if direction == 'L':
-        return (start_position - rotation) %100
+        return (start_position - rotation) % 100
     elif direction == 'R':
-        return (start_position + rotation) %100
+        return (start_position + rotation) % 100
     return None
+
 
 def turn_dial_and_count(direction: str, start_position: int, rotation: int) -> tuple[int, int]:
     pos = start_position
@@ -36,6 +39,7 @@ def turn_dial_and_count(direction: str, start_position: int, rotation: int) -> t
 
     return pos, count
 
+
 def compute_part_one(file_name: str) -> str:
     rotations = read_input_file(file_name)
     start_position: int = 50
@@ -48,6 +52,7 @@ def compute_part_one(file_name: str) -> str:
 
     return f'{count_zero= }'
 
+
 def compute_part_two(file_name: str) -> str:
     rotations = read_input_file(file_name)
     start_position: int = 50
@@ -57,12 +62,7 @@ def compute_part_two(file_name: str) -> str:
         start_position, count_zero = turn_dial_and_count(direction, start_position, rotation)
         total_passing += count_zero
 
-
-
     return f'{total_passing= }'
-
-
-
 
 
 if __name__ == '__main__':

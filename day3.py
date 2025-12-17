@@ -13,6 +13,7 @@ def read_input_file(file_name: str) -> list:
 
     return content
 
+
 def largest_digit_and_index(s):
     """
     Find the largest digit in a string and return both the digit and its index.
@@ -35,6 +36,7 @@ def largest_digit_and_index(s):
                 best_index = i
 
     return best_digit, best_index
+
 
 def return_joltage(bank: str) -> int:
     """
@@ -61,18 +63,20 @@ def return_joltage(bank: str) -> int:
 
     return joltage
 
+
 def return_joltage_12_digits(bank: str) -> int:
     digits = []
 
-    for i in range(11,0, -1):
+    for i in range(11, 0, -1):
         digit, index = largest_digit_and_index(bank[:-i])
-        bank = bank[index+1:]
+        bank = bank[index + 1:]
         digits.append(digit)
     digit, _ = largest_digit_and_index(bank)
     digits.append(digit)
     joltage = int(''.join(digits))
 
     return joltage
+
 
 def compute_part_one(file_name: str) -> str:
     """
@@ -93,6 +97,7 @@ def compute_part_one(file_name: str) -> str:
 
     return f'{total_joltage= }'
 
+
 def compute_part_two(file_name: str) -> str:
     """
     Compute the total joltage for all banks in the input file.
@@ -111,6 +116,7 @@ def compute_part_two(file_name: str) -> str:
         total_joltage += joltage
 
     return f'{total_joltage= }'
+
 
 if __name__ == '__main__':
     print(f"Part I: {compute_part_one('input/input3.txt')}")

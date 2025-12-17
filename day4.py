@@ -6,6 +6,7 @@ def read_input_file(file_name: str) -> list:
         content = f.read().splitlines()
     return content
 
+
 def find_neighbours(x: int, y: int, grid: list) -> list:
     neighbours = []
     for dx, dy in DIRECTIONS:
@@ -14,6 +15,7 @@ def find_neighbours(x: int, y: int, grid: list) -> list:
                 neighbours.append((x + dx, y + dy))
 
     return neighbours
+
 
 def compute_part_one(file_name: str) -> str:
     grid = read_input_file(file_name)
@@ -28,8 +30,11 @@ def compute_part_one(file_name: str) -> str:
 
     return f'{number_accessible_by_forklift= }'
 
+
 def compute_part_two(file_name: str) -> str:
     grid = read_input_file(file_name)
+    # maze = [list(row) for row in grid]
+
     height = len(grid)
     width = len(grid[0])
 
