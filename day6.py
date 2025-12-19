@@ -12,6 +12,7 @@ def read_and_parse_input_file(file_name: str) -> tuple[list[list[int]], list[str
 
     return numbers, operators
 
+
 def read_and_parse_input_file_two(file_name: str):
     with open(file_name) as f:
         rows = [line.rstrip("\n") for line in f]
@@ -28,6 +29,7 @@ def read_and_parse_input_file_two(file_name: str):
 
     return columns
 
+
 def parse_math(numbers: list[list[int]], operators: list[str]) -> int:
     total_sum = 0
 
@@ -39,6 +41,7 @@ def parse_math(numbers: list[list[int]], operators: list[str]) -> int:
             total_sum += prod(column)
 
     return total_sum
+
 
 def parse_math_two(rows: list) -> int:
     blocks = []
@@ -74,8 +77,8 @@ def parse_math_two(rows: list) -> int:
         else:
             total_sum += prod(column)
 
-
     return total_sum
+
 
 def compute_part_one(file_name: str) -> str:
     numbers, operators = read_and_parse_input_file(file_name)
