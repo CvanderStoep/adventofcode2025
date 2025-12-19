@@ -1,4 +1,4 @@
-def read_input_file(file_name: str) -> tuple[list[tuple[int, ...]], list[int]]:
+def read_and_parse_input_file(file_name: str) -> tuple[list[tuple[int, ...]], list[int]]:
     with open(file_name) as f:
         ranges_block, ids_block = f.read().strip().split("\n\n")
 
@@ -16,29 +16,26 @@ def count_range_values(ranges: list) -> int:
 
 
 def merge_ranges(ranges):
-    # Sort by start value
     ranges = sorted(ranges, key=lambda x: x[0])
     merged = []
 
     for start, end in ranges:
         if not merged or start > merged[-1][1]:
-            # No overlap → new range
             merged.append([start, end])
         else:
-            # Overlap → extend the last range
             merged[-1][1] = max(merged[-1][1], end)
 
     return merged
 
 
 def compute_part_one(file_name: str) -> str:
-    ranges, ids = read_input_file(file_name)
-    number_fresh_ingredients = sum(is_fresh_ingredient(ranges, id_) for id_ in ids)
-    return f"{number_fresh_ingredients= }"
+    ranges, ids = read_and_parse_input_file(file_name)
+    fresh_ingredient_count = sum(is_fresh_ingredient(ranges, id_) for id_ in ids)
+    return f"{fresh_ingredient_count= }"
 
 
 def compute_part_two(file_name: str) -> str:
-    ranges, _ = read_input_file(file_name)
+    ranges, _ = read_and_parse_input_file(file_name)
     merged = merge_ranges(ranges)
     total = count_range_values(merged)
     return f'{total = }'
