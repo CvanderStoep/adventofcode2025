@@ -1,9 +1,7 @@
 import math
+import networkx as nx
 from collections import defaultdict
 from itertools import combinations
-
-from sklearn.cluster import DBSCAN, KMeans
-import numpy as np
 
 
 def read_and_parse_input_file(file_name: str) -> list[tuple[int, ...]]:
@@ -13,46 +11,6 @@ def read_and_parse_input_file(file_name: str) -> list[tuple[int, ...]]:
 
 def distance(a: tuple[int, ...], b: tuple[int, ...]) -> float:
     return sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5
-
-
-def cluster_points_dbscan(points, eps=50, min_samples=3):
-    """
-    points: list of (x, y, z)
-    eps: max distance between points to be considered neighbors
-    min_samples: minimum points to form a cluster
-    """
-    arr = np.array(points)
-
-    db = DBSCAN(eps=eps, min_samples=min_samples).fit(arr)
-    labels = db.labels_  # -1 means noise/outlier
-
-    clusters = {}
-    for idx, label in enumerate(labels):
-        clusters.setdefault(label, []).append(idx)
-
-    return clusters
-
-
-def cluster_kmeans(points, k):
-    """
-    points: list of (x, y, z)
-    k: number of clusters
-    """
-    arr = np.array(points)
-
-    model = KMeans(n_clusters=k)
-    labels = model.fit_predict(arr)
-
-    clusters = {}
-    for idx, label in enumerate(labels):
-        clusters.setdefault(label, []).append(idx)
-
-    return clusters, model.cluster_centers_
-
-
-import math
-import networkx as nx
-from itertools import combinations
 
 
 def compute_part_one_networkx(file_name: str) -> str:
