@@ -44,6 +44,8 @@ def find_minimum_presses(machine) -> int | None:
 
 
 def find_minimum_presses_two(machine) -> int | None:
+    # it works, but it is way too slow
+
     target_lights, buttons, target_joltage = parse_machine(machine)
     print(target_lights, buttons, target_joltage)
 
@@ -75,14 +77,14 @@ def compute_part_one(file_name: str) -> str:
 
 def compute_part_two(file_name: str) -> str:
     machines = read_and_parse_input_file(file_name)
-    print(machines)
+    # print(machines)
     total_presses = 0
     for machine in machines:
         _, buttons, targets = parse_machine(machine)
 
         n = len(buttons)
         m = len(targets)
-        print(buttons, targets)
+        # print(buttons, targets)
 
         x = [Int(f'x{i}') for i in range(n)]
 
@@ -113,11 +115,11 @@ def compute_part_two(file_name: str) -> str:
             solution = [m[x[i]] for i in range(n)]
             total = sum(v.as_long() for v in solution)
             total_presses += total
-
-            print("solution:", solution)
-            print(f'{total= }')
-        else:
-            print("no solution")
+        #
+        #     print("solution:", solution)
+        #     print(f'{total= }')
+        # else:
+        #     print("no solution")
 
     return f'{total_presses= }'
 
